@@ -36,11 +36,10 @@ document.querySelector("#pause").addEventListener("click", function() {
 // slow down the video
 document.querySelector("#slower").addEventListener("click", function() {
 	// document.querySelector("#slower") is the slower button
-	console.log("Slow Down");
-	// write this obvi
-	document.querySelector("#player1").video.playbackRate *= 0.95;
-	// playbackRate is set to 95% of the current playbackRate
-	// i guess *= means multiply by? ***********ask************?
+	rate = video.playbackRate;
+	// rate is the playbackRate of the video for time
+	document.querySelector("#player1").playbackRate = (rate - .1);
+// subtract .1 from the rate is subtracint 10 seconds from the rate
 	console.log("New speed is " + video.playbackRate);
 	// write this obvi
 });
@@ -49,8 +48,12 @@ document.querySelector("#faster").addEventListener("click", function() {
 	// document.querySelector("#faster") is the faster button
 	console.log("Speed Up");
 	// write this obvi
-	document.querySelector("#player1").video.playbackRate /= 0.95;
+	rate = video.playbackRate;
+	// rate is the playbackRate of the video for time
+	document.querySelector("#player1").playbackRate = (rate + .1);
 	// playbackRate is set to 95% of the current playbackRate
+	// that did not work
+	// switch rate + .1 because I am adding 10 seconds to the rate which is cthe surrent time
 	//  /= means divide by
 	console.log("New speed is " + video.playbackRate);
 	// write this obvi
@@ -60,13 +63,16 @@ document.querySelector("#skip").addEventListener("click", function() {
 	// document.querySelector("#skip") is the skip button
 	console.log("Skip Ahead");
 	// write this obvi
-	if (video.currentTime < video.duration - 10) {
-		// if the current time of the video is less than the duration of the video minus 10 seconds
-		video.currentTime += 10;
+	skip = video.currentTime;
+	// skip is the current time of the video
+	if (skip >= video.duration) {
+	// if time is greater than or equal to the duration of the video  then skip to restart
+		document.querySelector("#player1").play;
 		// the current time of the video is set to the current time of the video plus 10 seconds
-	} else {
-		video.currentTime = 0;
-		// otherwise the current time of the video is set to 0
+	}
+	else {
+		document.querySelector("#player1").currentTime = (skip + 10);
+		// the current time of the video is set to the current time of the video plus 10 seconds
 		console.log("Going back to beginning");
 		// write this obvi
 	}
