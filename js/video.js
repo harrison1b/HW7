@@ -34,12 +34,13 @@ document.querySelector("#pause").addEventListener("click", function() {
 	// pause the video
 });
 // slow down the video
+// 3: Video not slowing down by 10%
 document.querySelector("#slower").addEventListener("click", function() {
 	// document.querySelector("#slower") is the slower button
 	rate = video.playbackRate;
 	// rate is the playbackRate of the video for time
 	document.querySelector("#player1").playbackRate = (rate - .1);
-// subtract .1 from the rate is subtracint 10 seconds from the rate
+// subtract .1 from the rate is subtracint 10%  from the rate
 	console.log("New speed is " + video.playbackRate);
 	// write this obvi
 });
@@ -50,7 +51,7 @@ document.querySelector("#faster").addEventListener("click", function() {
 	// write this obvi
 	rate = video.playbackRate;
 	// rate is the playbackRate of the video for time
-	document.querySelector("#player1").playbackRate = (rate + .1);
+	document.querySelector("#player1").playbackRate = (rate + 0.1);
 	// playbackRate is set to 95% of the current playbackRate
 	// that did not work
 	// switch rate + .1 because I am adding 10 seconds to the rate which is cthe surrent time
@@ -73,10 +74,17 @@ document.querySelector("#skip").addEventListener("click", function() {
 	else {
 		document.querySelector("#player1").currentTime = (skip + 10);
 		// the current time of the video is set to the current time of the video plus 10 seconds
-		console.log("Going back to beginning");
+		//should this be 15? check gw 
+		console.log("skip ahead");
 		// write this obvi
 	}
 });
+
+
+// revisit so far just used copilot / one sweep over //
+//for mute video:
+// w3 code
+// document.getElementById("myAudio").muted = true;
 // mute the video
 document.querySelector("#mute").addEventListener("click", function() {
 	// document.querySelector("#mute") is the mute button
@@ -95,16 +103,19 @@ document.querySelector("#mute").addEventListener("click", function() {
 		// the text of the mute button is set to mute
 	}
 });
-// change the volume of the video
+// change the volume of the video-3: Video volume [ after ] play is not displaying correctly. Do you have the correct number? Did you remember the % sign?
 document.querySelector("#slider").addEventListener("change", function() {
 	// document.querySelector("#slider") is the slider
 	console.log(this.value);
-	// write this obvi
+	// write this obvi check the value of the slider
 	video.volume = this.value / 100;
 	// the volume of the video is set to the value of the slider divided by 100
 	document.querySelector("#volume").innerHTML = this.value + "%";
 	// the volume is displayed as a percentage
 });
+
+
+// old school ?????????????/
 // utilize oldSchool class for video
 document.querySelector("#vintage").addEventListener("click", function() {
 	// document.querySelector("#vintage") is the vintage button // old school
